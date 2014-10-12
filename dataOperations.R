@@ -39,8 +39,11 @@ datA$DateTime <- paste(datA$Date, datA$Time)
 # remove additional columns (Date, Time) since that info now in DateTime
 datA <- datA[, c(10,3:9)]
 
+# convert DateTime to actual DateTime, not character (ended up this after paste)
+datA$DateTime <- strptime(datA$DateTime, format="%Y-%m-%d %H:%M:%S")
+
 # report status
-message("... dataset loaded and subset to object: 'datA'")
+message("... data operations complete - dataset loaded & subset to object: 'datA'")
 
 #str(datA)
 datA <<- datA
